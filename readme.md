@@ -7,7 +7,7 @@ You can use this package to bridge that gap till Link supports that completely. 
 You can see hands in the Scene View and access hand related data quickly.
 **That should make iterations faster without the need to deploy all changes to Quest.**
 
-![Quest Hand Tacking in Unity Editor](https://previews.dropbox.com/p/orig/AAq3UwcXwE9ITawCITtacwdwpuTXiRJUIs9SsM1AjLfQg32mtQIKNr4nRudZIo5UhzzsMZouTrNfkhcXM-sHbhD-ZZAExNDI7GRrpVciOjztnAXVVmsj4i8sSnZF3uimsQ85h9_sInq5tAXAy2MDZwvghiF31LQue62ExThdC0_DSkkGyaIqb8nQfMbYl-V7GkQhLy7NFmcrC5B5pU1bBsT8GREVt01IxWpr8QjxhBOGudjkozu-v1_n8y-oqy8ZIMy3pJtm4t0TB6GFH6GMXxnJJAm0sXq1yZqHviX5iKvBjIfNSH2S5MXjkSJcaFSkpDM/p.gif?fv_content=true&size_mode=5)
+![Quest Hand Tacking in Unity Editor](/_github/QuestHandsTrackedInUnityEditor.gif)
 
 
 ## Setup
