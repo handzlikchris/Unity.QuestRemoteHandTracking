@@ -11,7 +11,7 @@ You can see hands in the Scene View and access hand related data quickly.
 
 
 ## Setup
-1) Import [Oculus Integration package]([https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022))
+1) Import [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
 2) Run 'HandsIntegrationHandsScene' from `/Assets/Oculus/SampleFramework/Usage`
 3) Make sure you follow Oculus guidelines to set up, also to enable hands in the scene `Hand Tracking Support` on `OVRCameraRig` game object needs to be set to either `Hands` or `Controller` and hands.
 4) [Download](https://github.com/handzlikchris/Unity.QuestRemoteHandTracking/raw/master/UnityPackage/QuestRemoteHandTracking.unitypackage) and import Import `Unity.QuestRemoteHandTracking` package
