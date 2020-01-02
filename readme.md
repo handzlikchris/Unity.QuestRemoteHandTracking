@@ -2,7 +2,7 @@
 
 Currently Oculus Link -> Unity integration is not supporting hand tracking. This makes quick iteration for hands related interactions more difficult.
 
-You can use this package to bridge that gap till Link supports that completely. It transmits hand related data directly to Unity via network and then feeds that into the scrips.
+You can use this package to bridge that gap till Link supports that completely. It transmits hand related data directly to Unity via network and then feeds that into the scripts.
 
 You can see hands in the Scene View and access hand related data quickly.
 **That should make iterations faster without the need to deploy all changes to Quest.**
