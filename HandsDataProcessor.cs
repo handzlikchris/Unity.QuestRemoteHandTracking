@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Assets.RemoteHandsTracking.Data;
+using Assets.RemoteHandsTracking.Utilities;
 using OculusSampleFramework;
 using UnityEngine;
 

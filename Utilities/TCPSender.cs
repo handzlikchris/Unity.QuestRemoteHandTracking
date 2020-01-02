@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 
-namespace Assets.RemoteHandsTracking
+namespace Assets.RemoteHandsTracking.Utilities
 {
     public class TCPSender
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace Assets.RemoteHandsTracking
+namespace Assets.RemoteHandsTracking.Utilities
 {
     public class FixedSizedQueue<T> : ConcurrentQueue<T>
     {

@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace Assets.RemoteHandsTracking
+namespace Assets.RemoteHandsTracking.Utilities
 {
     public class UDPSender
     {
