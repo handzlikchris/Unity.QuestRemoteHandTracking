@@ -2,7 +2,6 @@
 using System.Collections;
 using Assets.RemoteHandsTracking.Data;
 using Assets.RemoteHandsTracking.Utilities;
-using Newtonsoft.Json;
 using OculusSampleFramework;
 using UnityEngine;
 

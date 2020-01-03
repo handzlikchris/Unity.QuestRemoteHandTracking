@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using Assets.RemoteHandsTracking.Data;
 using Assets.RemoteHandsTracking.Utilities;
-using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 
