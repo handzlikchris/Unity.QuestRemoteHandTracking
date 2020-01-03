@@ -1,3 +1,4 @@
+
 # Hands Tracking (Oculus Quest) directly in Unity Editor
 
 Currently Oculus Link -> Unity integration is not supporting hand tracking. This makes quick iteration for hands related interactions more difficult.
@@ -31,8 +32,36 @@ Data will be sent over your network, best if your PC and Quest are on the same w
 ## Running
 That's it. Now run the application on Quest and hit play in the editor. Once Quest starts sending your hand data into Unity you'll be able to see them directly in Scene View.
 
+## Recording and Replaying
+If you're iterating over specific gesture for a while it may be easier to record it and replay, this way you won't need to do it over and over in Quest.
+
+![Quest Hand Tracking in Unity Editor - Custom Replay](/_github/QuestHandsTrackedInUnityEditor - Custom Replay.gif)
+
+### Recording
+1) Play the scene (in editor and in Quest)
+	- make sure you can see hand movement on screen before recording
+2) Go to `HandsDataRecorder` and fill `New Recording Name`
+	- you can have multiple recordings and they'll be locally persisted under that name
+3) In editor on `HandsDataRecorder` click `StartRecording`
+4) Perform gestures as needed
+5) In editor on `HandsDataRecorder` click `StopRecording`
+	- you'll now have a child under `HandsDataRecorder` named as defined in `New Recording Name`, this is locally persisted and **can be re-run later without needing to even connecting Quest to PC**
+
+### Replaying
+1) Run the scene (you don't need to have Ouest running)
+1) In editor go to `HandsDataRecorder` - it'll have children with your custom recordings
+2) Pick one that you want to replay and click on `Play`
+	- You can also remove it from drive via `Delete` button
+3) Inspector will focus on `HandsDataPlayer` and will start playing your pre-recorded gestures
+
+**Controlling Replay**
+With recording assigned to `HandDataPlayer` you can also choose specific frame that you'd like to view via `ManuallyMoveToFrame` 
+
+
 ## Customising to run in your project
 You can easily use the package in your project. To do so you need to adjust feeder scripts that set hand / mesh / skeleton data. Look at classes in `Customisation` to see how that's done. Assign new handler to corresponding event on `HandsDataReceiver` object.
+
+Remember to change event calls on `HandDataRecorder` to use your custom feeder objects.
 
 
 ## Known issues
