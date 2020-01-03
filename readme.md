@@ -35,7 +35,7 @@ That's it. Now run the application on Quest and hit play in the editor. Once Que
 ## Recording and Replaying
 If you're iterating over specific gesture for a while it may be easier to record it and replay, this way you won't need to do it over and over in Quest.
 
-![Quest Hand Tracking in Unity Editor - Custom Replay](/_github/QuestHandsTrackedInUnityEditor - Custom Replay.gif)
+![Quest Hand Tracking in Unity Editor - Custom Replay](/_github/QuestHandsTrackedInUnityEditor_ Custom_Replay.gif)
 
 ### Recording
 1) Play the scene (in editor and in Quest)
