@@ -5,6 +5,28 @@ namespace Assets.RemoteHandsTracking.Extensions
 {
     public static class TypeExtensions
     {
+        public class FieldAccess<TType, TFieldType>
+        {
+            public TType Object { get; }
+            private Action<TType, TFieldType> Setter { get; }
+            private Func<TType, TFieldType> Getter { get; }
+
+            public FieldAccess(TType @object, string fieldName)
+            {
+                Object = @object;
+                Getter = typeof(TType).CreateGetFieldDelegate<TType, TFieldType>(fieldName);
+                Setter = typeof(TType).CreateSetFieldDelegate<TType, TFieldType>(fieldName);
+            }
+
+            public TFieldType Get() => Getter(Object);
+            public void Set(TFieldType val) => Setter(Object, val);
+        }
+
+        public static FieldAccess<TType, TFieldType> CreateFieldAccess<TType, TFieldType>(this Type type, TType obj, string fieldName, bool isGettingPropertyBackingField = false)
+        {
+            return new FieldAccess<TType, TFieldType>(obj, isGettingPropertyBackingField ? $"<{fieldName}>k__BackingField" : fieldName);
+        }
+
         public static Func<TClass, TReturn> CreateGetFieldDelegate<TClass, TReturn>(this Type type, string fieldName)
         {
             var instExp = Expression.Parameter(type);
