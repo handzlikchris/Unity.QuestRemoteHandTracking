@@ -1,4 +1,5 @@
 
+
 # Hands Tracking (Oculus Quest) directly in Unity Editor
 
 Currently Oculus Link -> Unity integration is not supporting hand tracking. This makes quick iteration for hands related interactions more difficult.
@@ -65,8 +66,11 @@ Remember to change event calls on `HandDataRecorder` to use your custom feeder o
 
 
 ## Known issues
-- If your hands are bit oddly shaped make sure your actual hands are not visible to Quest cameras for a second or two when app starts up. There seems to be some timing / initialization issue with skeleton/mesh if they are visible from very first moments.
 
+### Hands out of shape
+If your hands are bit oddly shaped make sure your actual hands are not visible to Quest cameras for a second or two when app starts up. There seems to be some timing / initialization issue with skeleton/mesh if they are visible from very first moments.
+
+### Hands flicker
 - If hands on screen are flickering go to `OculusSampleFramework.Hand.ScaledAlpha` in `\Assets\Oculus\SampleFramework\Core\CustomHands\Scripts\Hand.cs` property and set getter to always return '1f'.
 ```
 // Calculated Alpha vlaue of the hand according to OVRPlugin.TrackingConfidence
@@ -82,4 +86,16 @@ public float ScaledAlpha
     }
 }
 ```
+- and also change `OculusSampleFramework.HandMesh.UpdatePose` in `\Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\HandMesh.cs` to always render
+```
+public void UpdatePose()
+{
+	//bool showHandMesh = _enableMeshVisual ? _hand.IsTracked : _enableMeshVisual;
+    bool showHandMesh = true;
+    if (HandSkinedMeshRenderer.enabled != showHandMesh)
+	{
+		HandSkinedMeshRenderer.enabled = showHandMesh;
+	}
+```
+
 That value is constantly overridden by default scripts. Even though it's set every there's some timing issue somewhere which could cause hands to flicker.
