@@ -99,11 +99,8 @@ namespace Assets.RemoteHandsTracking.Customisations
 
         private class HandReflection
         {
-            //private object _confidenceFader;
             private Action<Hand, bool> IsTrackedSetter { get; }
             private Action<Hand, Hand.HandTrackingConfidence> HandConfidenceSetter { get; }
-            //private Func<Hand, object> ConfidenceFaderGetter { get; }
-            //private Func<Hand.HandTrackingConfidence, float> ConfidenceFaderExecuteNextAlphaValueMethodFunc { get; }
             private Func<Hand, Hand.PointerState> PointerGetter { get; }
             public HandConfidenceFader HandConfidenceFader { get; }
 
@@ -118,23 +115,13 @@ namespace Assets.RemoteHandsTracking.Customisations
                 HandConfidenceSetter = handType.CreateSetFieldDelegate<Hand, Hand.HandTrackingConfidence>("_handConfidence");
 
                 HandConfidenceFader = new HandConfidenceFader(40);
-                //ConfidenceFaderGetter = handType.CreateGetFieldDelegate<Hand, object>("_confidenceFader");
-                //_confidenceFader = ConfidenceFaderGetter(Hand);
-                //var confidenceFaderNextAlphaValueMethod = _confidenceFader.GetType()
-                //    .GetMethod("NextAlphaValue", new[] { typeof(Hand.HandTrackingConfidence) });
-                //ConfidenceFaderExecuteNextAlphaValueMethodFunc = (Func<Hand.HandTrackingConfidence, float>)
-                //    Delegate.CreateDelegate(typeof(Func<Hand.HandTrackingConfidence, float>), _confidenceFader, confidenceFaderNextAlphaValueMethod);
-
                 PointerGetter = handType.CreateGetFieldDelegate<Hand, Hand.PointerState>("_pointer");
             }
 
             public void SetIsTracked(bool isTracked) => IsTrackedSetter(Hand, isTracked);
             public void SetHandConfidence(Hand.HandTrackingConfidence handConfidence) => HandConfidenceSetter(Hand, handConfidence);
-            //public float ConfidenceFaderExecuteNextAlphaValueMethod(Hand.HandTrackingConfidence handTrackingConfidence)
-            //    => ConfidenceFaderExecuteNextAlphaValueMethodFunc(handTrackingConfidence);
 
             public Hand.PointerState GetPointer() => PointerGetter(Hand);
-
         }
 
         private class HandConfidenceFader
