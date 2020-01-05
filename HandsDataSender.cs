@@ -2,7 +2,6 @@
 using System.Collections;
 using Assets.RemoteHandsTracking.Data;
 using Assets.RemoteHandsTracking.Utilities;
-using OculusSampleFramework;
 using UnityEngine;
 
 namespace Assets.RemoteHandsTracking
@@ -92,7 +91,7 @@ namespace Assets.RemoteHandsTracking
 
         private IEnumerator InitializeSkeletonAndSend(OVRPlugin.Hand hand)
         {
-            var skeletonType = HandSkeleton.GetSkeletonTypeFromHandType(hand);
+            var skeletonType = GetSkeletonTypeFromHandType(hand);
             if (OVRPlugin.GetSkeleton(skeletonType, out var skeleton))
             {
                 try
@@ -113,7 +112,7 @@ namespace Assets.RemoteHandsTracking
 
         private IEnumerator InitializeMeshAndSend(OVRPlugin.Hand hand)
         {
-            var meshType = HandMesh.GetHandMeshTypeFromOVRHandType(hand);
+            var meshType = GetHandMeshTypeFromOVRHandType(hand);
             if (OVRPlugin.GetMesh(meshType, out var mesh))
             {
                 try
@@ -168,6 +167,22 @@ namespace Assets.RemoteHandsTracking
             } while (shouldRetry);
 
             yield break;
+        }
+
+        private static OVRPlugin.SkeletonType GetSkeletonTypeFromHandType(OVRPlugin.Hand hand)
+        {
+            return hand == OVRPlugin.Hand.HandLeft ?
+                OVRPlugin.SkeletonType.HandLeft :
+                hand == OVRPlugin.Hand.HandRight ?
+                    OVRPlugin.SkeletonType.HandRight : OVRPlugin.SkeletonType.None;
+        }
+
+        private static OVRPlugin.MeshType GetHandMeshTypeFromOVRHandType(OVRPlugin.Hand hand)
+        {
+            return hand == OVRPlugin.Hand.HandLeft ?
+                OVRPlugin.MeshType.HandLeft :
+                hand == OVRPlugin.Hand.HandRight ?
+                    OVRPlugin.MeshType.HandRight : OVRPlugin.MeshType.None;
         }
     }
 }
