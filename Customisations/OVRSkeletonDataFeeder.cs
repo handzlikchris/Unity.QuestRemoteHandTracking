@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Assets.RemoteHandsTracking.Data;
 using Assets.RemoteHandsTracking.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.RemoteHandsTracking.Customisations.OVR
+namespace Assets.RemoteHandsTracking.Customisations
 {
     public class OVRSkeletonDataFeeder: MonoBehaviour
     {

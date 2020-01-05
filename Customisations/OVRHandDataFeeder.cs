@@ -4,7 +4,7 @@ using Assets.RemoteHandsTracking.Data;
 using Assets.RemoteHandsTracking.Extensions;
 using UnityEngine;
 
-namespace Assets.RemoteHandsTracking.Customisations.OVR
+namespace Assets.RemoteHandsTracking.Customisations
 {
     public class OVRHandDataFeeder : MonoBehaviour
     {
