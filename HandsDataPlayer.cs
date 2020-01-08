@@ -31,6 +31,8 @@ namespace Assets.RemoteHandsTracking
         
         private Queue<HandsDataRecordedFrame> _framesToPlay;
         private HandsDataRecordedFrame _currentlyPlayedFrame;
+        private bool _isSkeletonDataProcessed;
+        private bool _isMeshDataProcessed;
 
         public void Play(HandsDataRecording recording)
         {
@@ -67,11 +69,11 @@ namespace Assets.RemoteHandsTracking
 
             if (_currentlyPlayedFrame == null) return;
 
-
-            if (CurrentlyPlayedFrame == 1)
+            if (!_isSkeletonDataProcessed)
             {
                 ProcessSkeletonData(CurrentPlayedRecording.InitHandData.LeftHandSkeletonData);
                 ProcessSkeletonData(CurrentPlayedRecording.InitHandData.RightHandSkeletonData);
+                _isSkeletonDataProcessed = true;
             }
 
             ProcessHandData(_currentlyPlayedFrame.LeftHandPhysicsUpdate);
@@ -82,10 +84,11 @@ namespace Assets.RemoteHandsTracking
         {
             if (_currentlyPlayedFrame == null) return;
 
-            if (CurrentlyPlayedFrame == 1)
+            if (!_isMeshDataProcessed)
             {
                 ProcessMeshData(CurrentPlayedRecording.InitHandData.LeftHandMeshData);
                 ProcessMeshData(CurrentPlayedRecording.InitHandData.RightHandMeshData);
+                _isMeshDataProcessed = true;
             }
 
             ProcessHandData(_currentlyPlayedFrame.LeftHandRenderUpdate);
