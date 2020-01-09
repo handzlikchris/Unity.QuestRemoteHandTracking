@@ -63,7 +63,7 @@ namespace Assets.RemoteHandsTracking.Customisations
             if (!bindPosesGO)
             {
                 bindPosesGO = new GameObject("BindPoses");
-                bindPosesGO.transform.SetParent(transform, false);
+                bindPosesGO.transform.SetParent(handSkeletonReflection.Skeleton.transform, false);
                 bindPosesGO.transform.localPosition = Vector3.zero;
                 bindPosesGO.transform.localRotation = Quaternion.identity;
 
@@ -77,7 +77,7 @@ namespace Assets.RemoteHandsTracking.Customisations
                 if (!capsulesGO)
                 {
                     capsulesGO = new GameObject("Capsules");
-                    capsulesGO.transform.SetParent(transform, false);
+                    capsulesGO.transform.SetParent(handSkeletonReflection.Skeleton.transform, false);
                     capsulesGO.transform.localPosition = Vector3.zero;
                     capsulesGO.transform.localRotation = Quaternion.identity;
 
