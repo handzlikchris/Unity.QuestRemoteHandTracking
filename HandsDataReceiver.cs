@@ -56,7 +56,7 @@ namespace Assets.RemoteHandsTracking
         void OnApplicationQuit()
         {
             _stopListeningForUdpData = true;
-            _tcpReceiver.Stop();
+            _tcpReceiver?.Stop();
         }
 
         private void ListenForUdpData()
