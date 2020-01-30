@@ -112,7 +112,7 @@ Data will be sent over your network, best if your PC and Quest are on the same w
 1) In `HandsDataSender` game object specify IP address that your PC is on
     - you can get that by running `ipconfig` in console
 2) Make sure your firewall is allowing connections on that IP/port
-3) In `HandsDataReceiver` specify the same IP and port (** do not use loopback address `127.0.0.1`, for some people this is causing issues and data will not come through.)
+3) In `HandsDataReceiver` specify the same IP and port (** do not use loopback address `127.0.0.1`**, for some people this is causing issues and data will not come through.)
 
 
 ## Running
