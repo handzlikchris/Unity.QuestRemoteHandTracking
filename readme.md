@@ -159,3 +159,6 @@ Remember to also change event calls on `HandDataRecorder` to use your custom fee
 ## Known issues
 - If your hands are a bit oddly shaped (on screen) make sure your actual hands are not visible to Quest cameras for a second or two when the app starts up. There seems to be some timing/initialization issue with skeleton/mesh if they are visible from very first moments.
 - sometimes when replaying mesh data will not be correctly loaded and hands won't render, when that happens just click `Replay`
+
+### Quest app freezes after startup
+**If quest application freezes on start it can not connect to IP Address/port you provided. Please make sure Quest and PC are on the same network, your FW rules are allowing connection and that your router is correctly passing traffic to PC**
