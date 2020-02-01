@@ -1,6 +1,7 @@
 
 
 
+
 # Hands Tracking (Oculus Quest) directly in Unity Editor
 
 Currently Oculus Link -> Unity integration is not supporting hand tracking. This makes quick iteration for hands related interactions more difficult.
@@ -114,6 +115,8 @@ Data will be sent over your network, best if your PC and Quest are on the same w
     - you can get that by running `ipconfig` in console
 2) Make sure your firewall is allowing connections on that IP/port
 3) In `HandsDataReceiver` specify the same IP and port (**do not use loopback address** `127.0.0.1`, for some people this is causing issues and data will not come through.)
+
+**If quest application freezes on start it can not connect to IP Address/port you provided. Please make sure Quest and PC are on the same network, your FW rules are allowing connection and that your router is correctly passing traffic to PC**
 
 
 ## Running
