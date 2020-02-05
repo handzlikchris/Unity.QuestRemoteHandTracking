@@ -70,7 +70,10 @@ namespace Assets.RemoteHandsTracking
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"Unable to get hand data, {e}");
+                    if (!_stopListeningForUdpData)
+                        Debug.LogError($"Unable to get hand data, {e}");
+                    else
+                        Debug.LogWarning("Listener restarted.");
                 }
             }
         }
@@ -122,10 +125,12 @@ namespace Assets.RemoteHandsTracking
 
         private void Update()
         {
-            if (_skeletonUpdateDataToProcess.TryDequeue(out var skeletonDataToProcess))
+            SkeletonData skeletonDataToProcess;
+            if (_skeletonUpdateDataToProcess.TryDequeue(out skeletonDataToProcess))
                 SkeletonDataReceived?.Invoke(skeletonDataToProcess);
 
-            if (_meshUpdateDataToProcess.TryDequeue(out var meshDataToProcess))
+            MeshData meshDataToProcess;
+            if (_meshUpdateDataToProcess.TryDequeue(out meshDataToProcess))
                 MeshDataReceived?.Invoke(meshDataToProcess);
 
             ProcessHandData(ref _lastLeftHandRenderUpdateDataToProcess);

@@ -19,6 +19,12 @@ namespace Assets.RemoteHandsTracking.Customisations
 
         private void Awake()
         {
+            if (LeftHand == null || RightHand == null)
+            {
+                Debug.LogWarning("Make sure hand references are assigned");
+                return;
+            }
+
             _leftHandReflection = new OVRHandReflection(LeftHand);
             _rightHandReflection = new OVRHandReflection(RightHand);
 
@@ -39,6 +45,7 @@ namespace Assets.RemoteHandsTracking.Customisations
             if(IsMeshDataSet && IsSkeletonDataSet)
             {
                 var handReflection = GetHandReflection(handData.Hand);
+                if(handReflection == null) return;
 
                 if (!handReflection.IsMeshRendererInitializeAlreadyCalled)
                 {
@@ -53,8 +60,8 @@ namespace Assets.RemoteHandsTracking.Customisations
 
         private void LateUpdate()
         {
-            ApplyIsInitializedOverride(_leftHandReflection);
-            ApplyIsInitializedOverride(_rightHandReflection);
+            if(_leftHandReflection != null) ApplyIsInitializedOverride(_leftHandReflection);
+            if(_rightHandReflection != null) ApplyIsInitializedOverride(_rightHandReflection);
         }
 
         private void ApplyIsInitializedOverride(OVRHandReflection handReflection)

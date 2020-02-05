@@ -1,7 +1,3 @@
-
-
-
-
 # Hands Tracking (Oculus Quest) directly in Unity Editor
 
 Currently Oculus Link -> Unity integration is not supporting hand tracking. This makes quick iteration for hands related interactions more difficult.

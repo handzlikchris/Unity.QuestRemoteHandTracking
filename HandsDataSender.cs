@@ -17,7 +17,7 @@ namespace Assets.RemoteHandsTracking
         private static readonly int WaitNSecondsBetweenTCPSendingFailures = 5;
         private UDPSender _udpSender;
         private TCPSender _tcpSender;
-        
+
         void Start()
         {
             _tcpSender = new TCPSender(SendToIp, SendToPort);
@@ -54,7 +54,7 @@ namespace Assets.RemoteHandsTracking
                 }
 
                 yield return new WaitForSeconds(SendKeepAlivePacketEveryNSeconds);
-            } 
+            }
 
         }
 
@@ -72,7 +72,7 @@ namespace Assets.RemoteHandsTracking
 
         private void PollAndSendHandTrackingData(OVRPlugin.Step renderStep, OVRPlugin.Hand handType)
         {
-            OVRPlugin.HandState handState = default;
+            OVRPlugin.HandState handState = default(OVRPlugin.HandState);
             if (OVRPlugin.GetHandState(renderStep, handType, ref handState))
             {
                 try
@@ -92,7 +92,8 @@ namespace Assets.RemoteHandsTracking
         private IEnumerator InitializeSkeletonAndSend(OVRPlugin.Hand hand)
         {
             var skeletonType = GetSkeletonTypeFromHandType(hand);
-            if (OVRPlugin.GetSkeleton(skeletonType, out var skeleton))
+            OVRPlugin.Skeleton skeleton;
+            if (OVRPlugin.GetSkeleton(skeletonType, out skeleton))
             {
                 try
                 {
@@ -113,7 +114,8 @@ namespace Assets.RemoteHandsTracking
         private IEnumerator InitializeMeshAndSend(OVRPlugin.Hand hand)
         {
             var meshType = GetHandMeshTypeFromOVRHandType(hand);
-            if (OVRPlugin.GetMesh(meshType, out var mesh))
+            OVRPlugin.Mesh mesh;
+            if (OVRPlugin.GetMesh(meshType, out mesh))
             {
                 try
                 {
